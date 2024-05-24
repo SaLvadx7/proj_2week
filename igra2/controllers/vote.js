@@ -2,12 +2,12 @@ const fs = require("fs").promises;
 const httpUtils  = require("../appModules/http-utils/parse-body");
 const { config, createRating, updateRating } = require("../appModules/rating");
 
-async function voteRouteController(req, res) {
+async function voteRouteController(req, res) {}
   if (req.method !== "POST") {
     res.statusCode = 404;
     res.end("Not Found");
   } else {
-  
+    try {
       res.statusCode = 200;
       const body = await httpUtils.parseBody(req);
       const data = JSON.parse(body);
@@ -21,7 +21,6 @@ async function voteRouteController(req, res) {
       res.setHeader("Content-Type", "application/json");
       res.end(JSON.stringify(newRating.sort((a, b) => b.rating - a.rating)));
     } 
-  }
-
+}
 
 module.exports = voteRouteController;
