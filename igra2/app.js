@@ -17,6 +17,7 @@ const server = http.createServer((req, res) => {
       break;
     case "/game":
       gameRouteController(res);
+      break;
     case "/vote":
       voteRouteController(req,res);
     default:
